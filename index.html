@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    </head>
+    <body>
+        <a-scene>
+            <a-assets>
+                <img id="texture" src="../AFrame/texture.png">
+            </a-assets>
+            <a-box width="1" height="1" depth="1" position="0 2 -5" rotation="45 45 45" scale="1 2 1" src="#texture">
+                <a-animation attribute="rotation" repeat="indefinite" to="0 360 0"></a-animation>
+            </a-box>
+        </a-scene>
+        <script>
+            AFRAME.registerComponent('scale-on-mouseenter',{
+                schema:{
+                    to:{default: '2.5 2.5 2.5', type:'vec3'}
+                },
+    
+                init:function(){
+                    var data = this.data;
+                    this.e1.addEventListener('mouseenter', function(){
+                        this.e1.object3D.scale.copy(data.to);
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
